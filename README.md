@@ -100,7 +100,7 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 | 0.3 | Configure Gradle version catalog (`libs.versions.toml`) | ✅ |
 | 0.4 | Add `.gitignore` for Android | ✅ |
 | 0.5 | Set `applicationId` and package structure | ✅ |
-| 0.6 | Verify project builds in Android Studio | ⬜ |
+| 0.6 | Verify project builds in Android Studio | ✅ |
 | 0.7 | Add CI workflow (GitHub Actions — assemble debug) | ⬜ |
 
 ### Phase 1 — Dependency injection (Hilt + Dagger)
@@ -114,7 +114,7 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 | 1.5 | Create `AppModule` (`@Module` + `@InstallIn`) | ✅ |
 | 1.6 | Add `DispatcherModule` (IO / Main / Default) | ⬜ |
 | 1.7 | Wire first `@Inject` constructor (smoke test) | ⬜ |
-| 1.8 | Verify Hilt code generation (`./gradlew assembleDebug`) | ⬜ |
+| 1.8 | Verify Hilt code generation (`./gradlew assembleDebug`) | ✅ |
 
 ### Phase 2 — Architecture & navigation
 
@@ -226,7 +226,32 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 
 ---
 
-## Getting started
+### Push to GitHub (one-time setup)
+
+Your GitHub account: **[@whoharsh0](https://github.com/whoharsh0)**
+
+The local repo is ready. Run these commands once to authenticate and publish:
+
+```powershell
+# 1. Install GitHub CLI (if needed) — or use the one in %TEMP%\gh-cli\bin\gh.exe
+gh auth login
+
+# 2. Create the remote repo and push
+cd D:\Cursor\RealTimeObjectIdentifier
+gh repo create RealTimeObjectIdentifier --public --source=. --remote=origin --push
+```
+
+If the repo already exists on GitHub:
+
+```powershell
+git remote add origin https://github.com/whoharsh0/RealTimeObjectIdentifier.git
+git branch -M main
+git push -u origin main
+```
+
+After a successful push, update task **0.1** in this README from 🔄 to ✅.
+
+---
 
 ### Prerequisites
 
@@ -238,7 +263,7 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 ### Clone and run
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/RealTimeObjectIdentifier.git
+git clone https://github.com/whoharsh0/RealTimeObjectIdentifier.git
 cd RealTimeObjectIdentifier
 ```
 
@@ -294,7 +319,8 @@ Download from [TensorFlow Lite Model Zoo](https://www.tensorflow.org/lite/models
 |------|--------|
 | 2026-06-24 | Project created — Kotlin, Compose, Hilt wired |
 | 2026-06-24 | README task sheet initialized |
-| 2026-06-24 | GitHub repository setup in progress |
+| 2026-06-24 | ✅ `assembleDebug` build verified — Hilt code generation OK |
+| 2026-06-24 | 🔄 GitHub push pending — run `gh auth login` then push |
 
 ---
 

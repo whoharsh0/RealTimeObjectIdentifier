@@ -9,8 +9,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.rudra.objectidentifier.presentation.MainViewModel
 import com.rudra.objectidentifier.ui.theme.RealTimeObjectIdentifierTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,14 +25,27 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RealTimeObjectIdentifierTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Text(
-                        text = "Real-Time Object Identifier",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                val viewModel: MainViewModel = hiltViewModel()
+                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+                MainScreen(
+                    title = uiState.title,
+                    version = uiState.version
+                )
             }
         }
+    }
+}
+
+@Composable
+private fun MainScreen(
+    title: String,
+    version: String
+) {
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Text(
+            text = if (version.isNotEmpty()) "$title\nv$version" else title,
+            modifier = Modifier.padding(innerPadding)
+        )
     }
 }
 
@@ -36,6 +53,9 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun MainActivityPreview() {
     RealTimeObjectIdentifierTheme {
-        Text("Real-Time Object Identifier")
+        MainScreen(
+            title = "Real-Time Object Identifier",
+            version = "1.0.0"
+        )
     }
 }

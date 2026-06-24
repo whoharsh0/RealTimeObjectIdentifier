@@ -101,7 +101,7 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 | 0.4 | Add `.gitignore` for Android | ✅ |
 | 0.5 | Set `applicationId` and package structure | ✅ |
 | 0.6 | Verify project builds in Android Studio | ✅ |
-| 0.7 | Add CI workflow (GitHub Actions — assemble debug) | ⬜ |
+| 0.7 | Add CI workflow (GitHub Actions — assemble debug) | ✅ |
 
 ### Phase 1 — Dependency injection (Hilt + Dagger)
 
@@ -112,8 +112,8 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 | 1.3 | Create `@HiltAndroidApp` Application class | ✅ |
 | 1.4 | Annotate `MainActivity` with `@AndroidEntryPoint` | ✅ |
 | 1.5 | Create `AppModule` (`@Module` + `@InstallIn`) | ✅ |
-| 1.6 | Add `DispatcherModule` (IO / Main / Default) | ⬜ |
-| 1.7 | Wire first `@Inject` constructor (smoke test) | ⬜ |
+| 1.6 | Add `DispatcherModule` (IO / Main / Default) | ✅ |
+| 1.7 | Wire first `@Inject` constructor (smoke test) | ✅ |
 | 1.8 | Verify Hilt code generation (`./gradlew assembleDebug`) | ✅ |
 
 ### Phase 2 — Architecture & navigation
@@ -216,12 +216,12 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 
 ## Current sprint focus
 
-**Sprint 1 (this week)**
+**Sprint 2 — Phase 2 (architecture)**
 
-1. ✅ Bootstrap project + Hilt setup
-2. ✅ Push to GitHub
-3. ⬜ Verify `./gradlew assembleDebug` builds
-4. ⬜ Add `DispatcherModule` + architecture packages
+1. ✅ Phase 0 complete (bootstrap + CI)
+2. ✅ Phase 1 complete (Hilt + DispatcherModule + inject smoke test)
+3. ⬜ Define package layers and Navigation Compose
+4. ⬜ `DetectionViewModel` + `DetectedObject` domain model
 5. ⬜ CameraX preview on screen
 
 ---
@@ -320,7 +320,8 @@ Download from [TensorFlow Lite Model Zoo](https://www.tensorflow.org/lite/models
 | 2026-06-24 | Project created — Kotlin, Compose, Hilt wired |
 | 2026-06-24 | README task sheet initialized |
 | 2026-06-24 | ✅ `assembleDebug` build verified — Hilt code generation OK |
-| 2026-06-24 | ✅ Published to GitHub — whoharsh0/RealTimeObjectIdentifier |
+| 2026-06-24 | ✅ Phase 0 complete — GitHub Actions CI added |
+| 2026-06-24 | ✅ Phase 1 complete — DispatcherModule, AppInfoProvider, MainViewModel |
 
 ---
 

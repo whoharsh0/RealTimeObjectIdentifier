@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.rudra.objectidentifier.core.AppInfoProvider
 import com.rudra.objectidentifier.di.IoDispatcher
 import com.rudra.objectidentifier.domain.repository.DetectionRepository
+import com.rudra.objectidentifier.domain.repository.UserSettingsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
@@ -19,6 +20,7 @@ import kotlinx.coroutines.withContext
 class DetectionViewModel @Inject constructor(
     private val detectionRepository: DetectionRepository,
     private val appInfoProvider: AppInfoProvider,
+    private val userSettingsRepository: UserSettingsRepository,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
@@ -28,6 +30,7 @@ class DetectionViewModel @Inject constructor(
     init {
         loadInitialState()
         observeDetections()
+        observeSettings()
     }
 
     private fun loadInitialState() {
@@ -80,6 +83,26 @@ class DetectionViewModel @Inject constructor(
                     it.copy(errorMessage = error.message ?: "Failed to stop detection")
                 }
             }
+        }
+    }
+
+    private fun observeSettings() {
+        viewModelScope.launch {
+            userSettingsRepository.settings.collect { settings ->
+                _uiState.update {
+                    it.copy(
+                        showConfidencePercent = settings.showConfidencePercent,
+                        showOnboardingDialog = !settings.hasSeenOnboarding && !it.isLoading
+                    )
+                }
+            }
+        }
+    }
+
+    fun onDismissOnboarding() {
+        viewModelScope.launch {
+            userSettingsRepository.setHasSeenOnboarding(true)
+            _uiState.update { it.copy(showOnboardingDialog = false) }
         }
     }
 

@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.Matrix
 import com.rudra.objectidentifier.domain.model.BoundingBox
 import com.rudra.objectidentifier.domain.model.DetectedObject
+import com.rudra.objectidentifier.domain.repository.UserSettingsRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -13,28 +14,24 @@ import org.tensorflow.lite.task.vision.detector.ObjectDetector
 
 @Singleton
 class TfliteObjectDetector @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val userSettingsRepository: UserSettingsRepository
 ) : AutoCloseable {
 
     private var detector: ObjectDetector? = null
-
-    private fun getDetector(): ObjectDetector {
-        return detector ?: ObjectDetector.createFromFileAndOptions(
-            context,
-            MODEL_FILE,
-            ObjectDetector.ObjectDetectorOptions.builder()
-                .setMaxResults(5)
-                .setScoreThreshold(0.45f)
-                .build()
-        ).also { detector = it }
-    }
+    private var activeThreshold: Float? = null
+    private var activeMaxResults: Int? = null
 
     fun detect(bitmap: Bitmap, rotationDegrees: Int): List<DetectedObject> {
+        val settings = userSettingsRepository.currentSettings()
         val rotated = rotateBitmap(bitmap, rotationDegrees)
         val imageWidth = rotated.width.toFloat()
         val imageHeight = rotated.height.toFloat()
         val tensorImage = TensorImage.fromBitmap(rotated)
-        val results = getDetector().detect(tensorImage)
+        val results = getDetector(
+            threshold = settings.confidenceThreshold,
+            maxResults = settings.maxDetections
+        ).detect(tensorImage)
 
         if (rotated !== bitmap) {
             rotated.recycle()
@@ -56,6 +53,28 @@ class TfliteObjectDetector @Inject constructor(
         }
     }
 
+    private fun getDetector(threshold: Float, maxResults: Int): ObjectDetector {
+        if (
+            detector != null &&
+            activeThreshold == threshold &&
+            activeMaxResults == maxResults
+        ) {
+            return detector!!
+        }
+
+        detector?.close()
+        val options = ObjectDetector.ObjectDetectorOptions.builder()
+            .setMaxResults(maxResults)
+            .setScoreThreshold(threshold)
+            .build()
+        return ObjectDetector.createFromFileAndOptions(context, MODEL_FILE, options)
+            .also {
+                detector = it
+                activeThreshold = threshold
+                activeMaxResults = maxResults
+            }
+    }
+
     private fun rotateBitmap(bitmap: Bitmap, rotationDegrees: Int): Bitmap {
         if (rotationDegrees == 0) return bitmap
         val matrix = Matrix().apply { postRotate(rotationDegrees.toFloat()) }
@@ -65,6 +84,8 @@ class TfliteObjectDetector @Inject constructor(
     override fun close() {
         detector?.close()
         detector = null
+        activeThreshold = null
+        activeMaxResults = null
     }
 
     companion object {

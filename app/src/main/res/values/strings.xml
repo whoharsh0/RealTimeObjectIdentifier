@@ -11,4 +11,16 @@
     <string name="detection_idle_hint">Ready when you are. Tap below to open the live scanner.</string>
     <string name="status_scanning">Scanning live…</string>
     <string name="status_ready">Ready to scan</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_detection">Detection</string>
+    <string name="settings_confidence_value">Confidence threshold: %1$d%%</string>
+    <string name="settings_max_detections_value">Max objects shown: %1$d</string>
+    <string name="settings_show_confidence">Show confidence % on labels</string>
+    <string name="settings_offline_title">100% On-Device</string>
+    <string name="settings_offline_body">All detection runs locally. No cloud, no accounts, no data leaves your phone.</string>
+    <string name="settings_privacy_title">Private by Design</string>
+    <string name="settings_privacy_body">Camera frames are processed in memory and never uploaded.</string>
+    <string name="onboarding_title">Welcome to Object Identifier</string>
+    <string name="onboarding_body">Scan objects in real time using on-device AI. Grant camera access, tap Start Scanning, and point your phone at anything. Your data never leaves this device.</string>
+    <string name="onboarding_got_it">Got it</string>
 </resources>

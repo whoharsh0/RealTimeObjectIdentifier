@@ -39,6 +39,7 @@ class DetectionViewModelTest {
         val viewModel = DetectionViewModel(
             detectionRepository = DetectionRepositoryImpl(),
             appInfoProvider = AppInfoProvider(),
+            userSettingsRepository = FakeUserSettingsRepository(),
             ioDispatcher = testDispatcher
         )
 
@@ -58,6 +59,7 @@ class DetectionViewModelTest {
         val viewModel = DetectionViewModel(
             detectionRepository = repository,
             appInfoProvider = AppInfoProvider(),
+            userSettingsRepository = FakeUserSettingsRepository(),
             ioDispatcher = testDispatcher
         )
 
@@ -74,6 +76,7 @@ class DetectionViewModelTest {
         val viewModel = DetectionViewModel(
             detectionRepository = DetectionRepositoryImpl(),
             appInfoProvider = AppInfoProvider(),
+            userSettingsRepository = FakeUserSettingsRepository(),
             ioDispatcher = testDispatcher
         )
 

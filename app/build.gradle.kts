@@ -82,6 +82,7 @@ dependencies {
     implementation(libs.tensorflow.lite)
     implementation(libs.tensorflow.lite.support)
     implementation(libs.tensorflow.lite.task.vision)
+    implementation(libs.androidx.datastore.preferences)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)

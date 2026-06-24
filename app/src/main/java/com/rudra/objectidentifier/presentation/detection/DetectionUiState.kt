@@ -10,5 +10,7 @@ data class DetectionUiState(
     val detections: List<DetectedObject> = emptyList(),
     val isDetecting: Boolean = false,
     val cameraLens: CameraLens = CameraLens.BACK,
+    val showConfidencePercent: Boolean = true,
+    val showOnboardingDialog: Boolean = false,
     val errorMessage: String? = null
 )

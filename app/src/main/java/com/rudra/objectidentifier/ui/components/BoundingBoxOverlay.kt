@@ -19,6 +19,7 @@ import com.rudra.objectidentifier.ui.theme.DetectionBoxStroke
 @Composable
 fun BoundingBoxOverlay(
     detections: List<DetectedObject>,
+    showConfidencePercent: Boolean = true,
     modifier: Modifier = Modifier
 ) {
     val density = LocalDensity.current
@@ -46,7 +47,11 @@ fun BoundingBoxOverlay(
                 style = Stroke(width = strokeWidthPx)
             )
 
-            val label = "${detection.label} ${detection.confidencePercent}%"
+            val label = if (showConfidencePercent) {
+                "${detection.label} ${detection.confidencePercent}%"
+            } else {
+                detection.label
+            }
             val textPaint = android.graphics.Paint().apply {
                 color = android.graphics.Color.WHITE
                 textSize = labelTextSizePx

@@ -47,6 +47,7 @@ import com.rudra.objectidentifier.ui.components.BoundingBoxOverlay
 import com.rudra.objectidentifier.ui.components.CameraPermissionContent
 import com.rudra.objectidentifier.ui.components.CameraPreview
 import com.rudra.objectidentifier.ui.components.GlassControlBar
+import com.rudra.objectidentifier.ui.components.OnboardingDialog
 import com.rudra.objectidentifier.ui.theme.AccentCyan
 import com.rudra.objectidentifier.ui.theme.GradientEnd
 import com.rudra.objectidentifier.ui.theme.GradientStart
@@ -97,6 +98,10 @@ fun DetectionScreen(
         onToggleCamera = viewModel::onToggleCamera,
         modifier = modifier
     )
+
+    if (uiState.showOnboardingDialog) {
+        OnboardingDialog(onDismiss = viewModel::onDismissOnboarding)
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -146,6 +151,7 @@ private fun DetectionScreenContent(
 
                 BoundingBoxOverlay(
                     detections = uiState.detections,
+                    showConfidencePercent = uiState.showConfidencePercent,
                     modifier = Modifier.fillMaxSize()
                 )
 

@@ -184,12 +184,12 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 
 | # | Task | Status |
 |---|------|--------|
-| 7.1 | Settings screen: confidence threshold slider | ⬜ |
-| 7.2 | Settings screen: max detections limit | ⬜ |
-| 7.3 | Settings screen: show/hide confidence % | ⬜ |
-| 7.4 | Persist settings with DataStore | ⬜ |
-| 7.5 | About screen (offline / privacy message) | ⬜ |
-| 7.6 | Splash / onboarding (one-time camera permission explain) | ⬜ |
+| 7.1 | Settings screen: confidence threshold slider | ✅ |
+| 7.2 | Settings screen: max detections limit | ✅ |
+| 7.3 | Settings screen: show/hide confidence % | ✅ |
+| 7.4 | Persist settings with DataStore | ✅ |
+| 7.5 | About screen (offline / privacy message) | ✅ |
+| 7.6 | Splash / onboarding (one-time camera permission explain) | ✅ |
 
 ### Phase 8 — Testing
 
@@ -205,8 +205,8 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 
 | # | Task | Status |
 |---|------|--------|
-| 9.1 | App icon (adaptive launcher) | 🔄 |
-| 9.2 | ProGuard rules for TFLite / CameraX | ⬜ |
+| 9.1 | App icon (adaptive launcher) | ✅ |
+| 9.2 | ProGuard rules for TFLite / CameraX | ✅ |
 | 9.3 | Generate signed release APK / AAB | ⬜ |
 | 9.4 | Play Store listing copy | ⬜ |
 | 9.5 | Privacy policy (no data collected) | ⬜ |
@@ -216,13 +216,13 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 
 ## Current sprint focus
 
-**Sprint 5 — Polish & benchmark**
+**Sprint 6 — Release prep**
 
-1. ✅ Phase 4/5/6 — TFLite detection + pipeline + UI redesign
-2. ⬜ Benchmark inference FPS on device
-3. ⬜ NNAPI / GPU delegate (optional speed boost)
-4. ⬜ Settings: confidence threshold slider
-5. ⬜ Play Store prep
+1. ✅ Phase 7 complete — settings, DataStore, onboarding
+2. ⬜ Phase 8 — expanded unit tests
+3. ⬜ Generate signed release AAB
+4. ⬜ Play Store listing + privacy policy
+5. ⬜ NNAPI delegate benchmark (optional)
 
 ---
 
@@ -321,7 +321,7 @@ Download from [TensorFlow Lite Model Zoo](https://www.tensorflow.org/lite/models
 | 2026-06-24 | README task sheet initialized |
 | 2026-06-24 | ✅ `assembleDebug` build verified — Hilt code generation OK |
 | 2026-06-24 | ✅ Phase 0 complete — GitHub Actions CI added |
-| 2026-06-24 | ✅ Phase 4/5/6 — TFLite detection, bounding boxes, dark UI redesign |
+| 2026-06-24 | ✅ Phase 7 — settings sliders, DataStore, onboarding, adaptive icon |
 
 ---
 

@@ -144,14 +144,14 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 
 | # | Task | Status |
 |---|------|--------|
-| 4.1 | Add TFLite dependencies (`tensorflow-lite`, `support`) | ⬜ |
-| 4.2 | Choose model: **EfficientDet-Lite0** or **MobileNet SSD** | ⬜ |
-| 4.3 | Bundle `.tflite` model in `assets/` | ⬜ |
-| 4.4 | Bundle `labels.txt` (COCO 80 classes) | ⬜ |
-| 4.5 | Create `ObjectDetector` class wrapping `Interpreter` | ⬜ |
-| 4.6 | Implement image preprocessing (resize, normalize) | ⬜ |
-| 4.7 | Implement post-processing (NMS, score threshold) | ⬜ |
-| 4.8 | Provide Hilt `@Singleton` binding for detector | ⬜ |
+| 4.1 | Add TFLite dependencies (`tensorflow-lite`, `support`) | ✅ |
+| 4.2 | Choose model: **EfficientDet-Lite0** or **MobileNet SSD** | ✅ |
+| 4.3 | Bundle `.tflite` model in `assets/` | ✅ |
+| 4.4 | Bundle `labels.txt` (COCO 80 classes) | ✅ |
+| 4.5 | Create `ObjectDetector` class wrapping `Interpreter` | ✅ |
+| 4.6 | Implement image preprocessing (resize, normalize) | ✅ |
+| 4.7 | Implement post-processing (NMS, score threshold) | ✅ |
+| 4.8 | Provide Hilt `@Singleton` binding for detector | ✅ |
 | 4.9 | Benchmark inference time on real device | ⬜ |
 | 4.10 | Optional: enable NNAPI / GPU delegate | ⬜ |
 
@@ -159,26 +159,26 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 
 | # | Task | Status |
 |---|------|--------|
-| 5.1 | Create `ImageAnalyzer` implementing `ImageAnalysis.Analyzer` | ⬜ |
-| 5.2 | Convert `ImageProxy` → `Bitmap` / `TensorImage` | ⬜ |
-| 5.3 | Run detector on background thread (coroutines) | ⬜ |
-| 5.4 | Map detection coordinates to preview aspect ratio | ⬜ |
-| 5.5 | Throttle analysis to target FPS (skip frames if busy) | ⬜ |
-| 5.6 | Emit results to ViewModel via callback / Flow | ⬜ |
-| 5.7 | Handle rotation (sensor orientation) | ⬜ |
+| 5.1 | Create `ImageAnalyzer` implementing `ImageAnalysis.Analyzer` | ✅ |
+| 5.2 | Convert `ImageProxy` → `Bitmap` / `TensorImage` | ✅ |
+| 5.3 | Run detector on background thread (coroutines) | ✅ |
+| 5.4 | Map detection coordinates to preview aspect ratio | ✅ |
+| 5.5 | Throttle analysis to target FPS (skip frames if busy) | ✅ |
+| 5.6 | Emit results to ViewModel via callback / Flow | ✅ |
+| 5.7 | Handle rotation (sensor orientation) | ✅ |
 
 ### Phase 6 — UI
 
 | # | Task | Status |
 |---|------|--------|
-| 6.1 | Design `DetectionScreen` (camera + overlay) | ⬜ |
-| 6.2 | Create `BoundingBoxOverlay` Composable (Canvas) | ⬜ |
-| 6.3 | Draw label + confidence above each box | ⬜ |
-| 6.4 | Add permission-denied empty state UI | ⬜ |
-| 6.5 | Add loading state (model init) | ⬜ |
-| 6.6 | Add top bar (app title, settings icon) | ⬜ |
-| 6.7 | Material 3 theme polish (colors, typography) | 🔄 |
-| 6.8 | Dark mode support | ⬜ |
+| 6.1 | Design `DetectionScreen` (camera + overlay) | ✅ |
+| 6.2 | Create `BoundingBoxOverlay` Composable (Canvas) | ✅ |
+| 6.3 | Draw label + confidence above each box | ✅ |
+| 6.4 | Add permission-denied empty state UI | ✅ |
+| 6.5 | Add loading state (model init) | ✅ |
+| 6.6 | Add top bar (app title, settings icon) | ✅ |
+| 6.7 | Material 3 theme polish (colors, typography) | ✅ |
+| 6.8 | Dark mode support | ✅ |
 
 ### Phase 7 — Settings & polish
 
@@ -216,13 +216,13 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 
 ## Current sprint focus
 
-**Sprint 4 — Phase 4 (TensorFlow Lite)**
+**Sprint 5 — Polish & benchmark**
 
-1. ✅ Phase 3 complete (CameraX live preview + ImageAnalysis)
-2. ⬜ Add TFLite dependencies
-3. ⬜ Bundle EfficientDet-Lite0 model + labels
-4. ⬜ Create `ObjectDetector` wrapper
-5. ⬜ Wire detector into `StubImageAnalyzer`
+1. ✅ Phase 4/5/6 — TFLite detection + pipeline + UI redesign
+2. ⬜ Benchmark inference FPS on device
+3. ⬜ NNAPI / GPU delegate (optional speed boost)
+4. ⬜ Settings: confidence threshold slider
+5. ⬜ Play Store prep
 
 ---
 
@@ -321,7 +321,7 @@ Download from [TensorFlow Lite Model Zoo](https://www.tensorflow.org/lite/models
 | 2026-06-24 | README task sheet initialized |
 | 2026-06-24 | ✅ `assembleDebug` build verified — Hilt code generation OK |
 | 2026-06-24 | ✅ Phase 0 complete — GitHub Actions CI added |
-| 2026-06-24 | ✅ Phase 3 complete — CameraX preview, permissions, ImageAnalysis stub |
+| 2026-06-24 | ✅ Phase 4/5/6 — TFLite detection, bounding boxes, dark UI redesign |
 
 ---
 

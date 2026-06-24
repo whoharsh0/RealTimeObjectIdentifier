@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">Object Identifier</string>
-    <string name="camera_permission_title">Camera access required</string>
-    <string name="camera_permission_rationale">This app needs your camera to identify objects in real time. All processing happens on your device.</string>
-    <string name="camera_permission_grant">Grant camera access</string>
-    <string name="camera_permission_denied">Camera permission denied. Enable it in Settings to use detection.</string>
-    <string name="start_detection">Start Detection</string>
-    <string name="stop_detection">Stop Detection</string>
+    <string name="camera_permission_title">Enable your camera</string>
+    <string name="camera_permission_rationale">Point your camera at any object to identify it instantly. Everything stays on your device — no cloud, no uploads.</string>
+    <string name="camera_permission_grant">Allow camera access</string>
+    <string name="camera_permission_denied">Camera blocked. Open Settings to enable access.</string>
+    <string name="start_detection">Start Scanning</string>
+    <string name="stop_detection">Stop Scanning</string>
     <string name="flip_camera">Flip camera</string>
-    <string name="objects_detected">Objects detected: %1$d</string>
-    <string name="detection_idle_hint">Grant camera access, then tap Start to open the live preview.</string>
+    <string name="objects_detected">%1$d found</string>
+    <string name="detection_idle_hint">Ready when you are. Tap below to open the live scanner.</string>
+    <string name="status_scanning">Scanning live…</string>
+    <string name="status_ready">Ready to scan</string>
 </resources>

@@ -131,14 +131,14 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 
 | # | Task | Status |
 |---|------|--------|
-| 3.1 | Add CameraX dependencies | ⬜ |
+| 3.1 | Add CameraX dependencies | ✅ |
 | 3.2 | Add `CAMERA` permission to manifest | ✅ |
-| 3.3 | Implement runtime permission composable / flow | ⬜ |
-| 3.4 | Create `CameraPreview` Composable (`PreviewView`) | ⬜ |
-| 3.5 | Bind `Preview` + `ImageAnalysis` use cases | ⬜ |
-| 3.6 | Configure `ImageAnalysis` (YUV, keep-latest strategy) | ⬜ |
-| 3.7 | Handle lifecycle (bind/unbind on resume/pause) | ⬜ |
-| 3.8 | Add camera switch (rear default) | ⬜ |
+| 3.3 | Implement runtime permission composable / flow | ✅ |
+| 3.4 | Create `CameraPreview` Composable (`PreviewView`) | ✅ |
+| 3.5 | Bind `Preview` + `ImageAnalysis` use cases | ✅ |
+| 3.6 | Configure `ImageAnalysis` (YUV, keep-latest strategy) | ✅ |
+| 3.7 | Handle lifecycle (bind/unbind on resume/pause) | ✅ |
+| 3.8 | Add camera switch (rear default) | ✅ |
 
 ### Phase 4 — Machine learning (TensorFlow Lite)
 
@@ -216,13 +216,13 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 
 ## Current sprint focus
 
-**Sprint 3 — Phase 3 (CameraX)**
+**Sprint 4 — Phase 4 (TensorFlow Lite)**
 
-1. ✅ Phase 2 complete (architecture + navigation)
-2. ⬜ Add CameraX dependencies
-3. ⬜ Camera permission composable
-4. ⬜ `CameraPreview` on `DetectionScreen`
-5. ⬜ Bind Preview + ImageAnalysis use cases
+1. ✅ Phase 3 complete (CameraX live preview + ImageAnalysis)
+2. ⬜ Add TFLite dependencies
+3. ⬜ Bundle EfficientDet-Lite0 model + labels
+4. ⬜ Create `ObjectDetector` wrapper
+5. ⬜ Wire detector into `StubImageAnalyzer`
 
 ---
 
@@ -321,7 +321,7 @@ Download from [TensorFlow Lite Model Zoo](https://www.tensorflow.org/lite/models
 | 2026-06-24 | README task sheet initialized |
 | 2026-06-24 | ✅ `assembleDebug` build verified — Hilt code generation OK |
 | 2026-06-24 | ✅ Phase 0 complete — GitHub Actions CI added |
-| 2026-06-24 | ✅ Phase 2 complete — domain/data layers, Navigation Compose, DetectionViewModel |
+| 2026-06-24 | ✅ Phase 3 complete — CameraX preview, permissions, ImageAnalysis stub |
 
 ---
 

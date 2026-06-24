@@ -2,6 +2,7 @@ package com.rudra.objectidentifier.presentation.detection
 
 import com.rudra.objectidentifier.core.AppInfoProvider
 import com.rudra.objectidentifier.data.repository.DetectionRepositoryImpl
+import com.rudra.objectidentifier.domain.model.CameraLens
 import com.rudra.objectidentifier.domain.model.DetectedObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -66,5 +67,23 @@ class DetectionViewModelTest {
 
         assertTrue(viewModel.uiState.value.isDetecting)
         assertEquals(emptyList<DetectedObject>(), repository.observeDetections().first())
+    }
+
+    @Test
+    fun onToggleCamera_switchesLensFacing() = runTest(testDispatcher) {
+        val viewModel = DetectionViewModel(
+            detectionRepository = DetectionRepositoryImpl(),
+            appInfoProvider = AppInfoProvider(),
+            ioDispatcher = testDispatcher
+        )
+
+        advanceUntilIdle()
+        assertEquals(CameraLens.BACK, viewModel.uiState.value.cameraLens)
+
+        viewModel.onToggleCamera()
+        assertEquals(CameraLens.FRONT, viewModel.uiState.value.cameraLens)
+
+        viewModel.onToggleCamera()
+        assertEquals(CameraLens.BACK, viewModel.uiState.value.cameraLens)
     }
 }

@@ -1,5 +1,6 @@
 package com.rudra.objectidentifier.presentation.detection
 
+import com.rudra.objectidentifier.domain.model.CameraLens
 import com.rudra.objectidentifier.domain.model.DetectedObject
 
 data class DetectionUiState(
@@ -8,5 +9,6 @@ data class DetectionUiState(
     val versionName: String = "",
     val detections: List<DetectedObject> = emptyList(),
     val isDetecting: Boolean = false,
+    val cameraLens: CameraLens = CameraLens.BACK,
     val errorMessage: String? = null
 )

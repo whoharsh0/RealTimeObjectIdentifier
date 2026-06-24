@@ -82,4 +82,8 @@ class DetectionViewModel @Inject constructor(
             }
         }
     }
+
+    fun onToggleCamera() {
+        _uiState.update { it.copy(cameraLens = it.cameraLens.toggled()) }
+    }
 }

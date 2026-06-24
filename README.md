@@ -120,12 +120,12 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 
 | # | Task | Status |
 |---|------|--------|
-| 2.1 | Define package layers: `ui`, `domain`, `data`, `di` | ⬜ |
-| 2.2 | Add Navigation Compose + Hilt ViewModel | ⬜ |
-| 2.3 | Create `DetectionUiState` sealed class / data class | ⬜ |
-| 2.4 | Create `DetectionViewModel` with `StateFlow` | ⬜ |
-| 2.5 | Add `DetectionRepository` interface + impl stub | ⬜ |
-| 2.6 | Add domain model `DetectedObject` (label, confidence, bounds) | ⬜ |
+| 2.1 | Define package layers: `ui`, `domain`, `data`, `di` | ✅ |
+| 2.2 | Add Navigation Compose + Hilt ViewModel | ✅ |
+| 2.3 | Create `DetectionUiState` sealed class / data class | ✅ |
+| 2.4 | Create `DetectionViewModel` with `StateFlow` | ✅ |
+| 2.5 | Add `DetectionRepository` interface + impl stub | ✅ |
+| 2.6 | Add domain model `DetectedObject` (label, confidence, bounds) | ✅ |
 
 ### Phase 3 — Camera (CameraX)
 
@@ -216,13 +216,13 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 
 ## Current sprint focus
 
-**Sprint 2 — Phase 2 (architecture)**
+**Sprint 3 — Phase 3 (CameraX)**
 
-1. ✅ Phase 0 complete (bootstrap + CI)
-2. ✅ Phase 1 complete (Hilt + DispatcherModule + inject smoke test)
-3. ⬜ Define package layers and Navigation Compose
-4. ⬜ `DetectionViewModel` + `DetectedObject` domain model
-5. ⬜ CameraX preview on screen
+1. ✅ Phase 2 complete (architecture + navigation)
+2. ⬜ Add CameraX dependencies
+3. ⬜ Camera permission composable
+4. ⬜ `CameraPreview` on `DetectionScreen`
+5. ⬜ Bind Preview + ImageAnalysis use cases
 
 ---
 
@@ -321,7 +321,7 @@ Download from [TensorFlow Lite Model Zoo](https://www.tensorflow.org/lite/models
 | 2026-06-24 | README task sheet initialized |
 | 2026-06-24 | ✅ `assembleDebug` build verified — Hilt code generation OK |
 | 2026-06-24 | ✅ Phase 0 complete — GitHub Actions CI added |
-| 2026-06-24 | ✅ Phase 1 complete — DispatcherModule, AppInfoProvider, MainViewModel |
+| 2026-06-24 | ✅ Phase 2 complete — domain/data layers, Navigation Compose, DetectionViewModel |
 
 ---
 

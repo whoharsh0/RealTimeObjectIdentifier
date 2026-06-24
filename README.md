@@ -95,7 +95,7 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 
 | # | Task | Status |
 |---|------|--------|
-| 0.1 | Create GitHub repository | 🔄 |
+| 0.1 | Create GitHub repository | ✅ |
 | 0.2 | Initialize Android project (Kotlin + Compose) | ✅ |
 | 0.3 | Configure Gradle version catalog (`libs.versions.toml`) | ✅ |
 | 0.4 | Add `.gitignore` for Android | ✅ |
@@ -219,7 +219,7 @@ A **completely free**, **offline-capable** Android app that identifies objects i
 **Sprint 1 (this week)**
 
 1. ✅ Bootstrap project + Hilt setup
-2. 🔄 Push to GitHub
+2. ✅ Push to GitHub
 3. ⬜ Verify `./gradlew assembleDebug` builds
 4. ⬜ Add `DispatcherModule` + architecture packages
 5. ⬜ CameraX preview on screen
@@ -320,7 +320,7 @@ Download from [TensorFlow Lite Model Zoo](https://www.tensorflow.org/lite/models
 | 2026-06-24 | Project created — Kotlin, Compose, Hilt wired |
 | 2026-06-24 | README task sheet initialized |
 | 2026-06-24 | ✅ `assembleDebug` build verified — Hilt code generation OK |
-| 2026-06-24 | 🔄 GitHub push pending — run `gh auth login` then push |
+| 2026-06-24 | ✅ Published to GitHub — whoharsh0/RealTimeObjectIdentifier |
 
 ---
 

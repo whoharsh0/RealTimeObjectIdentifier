@@ -31,3 +31,6 @@ jobs:
 
       - name: Run unit tests
         run: ./gradlew testDebugUnitTest --no-daemon
+
+      - name: Build release bundle
+        run: ./gradlew bundleRelease --no-daemon

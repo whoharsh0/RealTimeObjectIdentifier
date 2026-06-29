@@ -1,7 +1,6 @@
 package com.rudra.objectidentifier.presentation.detection
 
 import com.rudra.objectidentifier.core.AppInfoProvider
-import com.rudra.objectidentifier.data.repository.DetectionRepositoryImpl
 import com.rudra.objectidentifier.domain.model.CameraLens
 import com.rudra.objectidentifier.domain.model.DetectedObject
 import kotlinx.coroutines.Dispatchers
@@ -36,32 +35,22 @@ class DetectionViewModelTest {
 
     @Test
     fun uiState_loadsAppInfoAndStartsIdle() = runTest(testDispatcher) {
-        val viewModel = DetectionViewModel(
-            detectionRepository = DetectionRepositoryImpl(),
-            appInfoProvider = AppInfoProvider(),
-            userSettingsRepository = FakeUserSettingsRepository(),
-            ioDispatcher = testDispatcher
-        )
+        val viewModel = createViewModel()
 
         advanceUntilIdle()
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertEquals("Real-Time Object Identifier", state.appTitle)
-        assertEquals("1.0.0", state.versionName)
+        assertEquals(com.rudra.objectidentifier.BuildConfig.VERSION_NAME, state.versionName)
         assertFalse(state.isDetecting)
         assertTrue(state.detections.isEmpty())
     }
 
     @Test
     fun onStartDetection_setsIsDetectingTrue() = runTest(testDispatcher) {
-        val repository = DetectionRepositoryImpl()
-        val viewModel = DetectionViewModel(
-            detectionRepository = repository,
-            appInfoProvider = AppInfoProvider(),
-            userSettingsRepository = FakeUserSettingsRepository(),
-            ioDispatcher = testDispatcher
-        )
+        val repository = FakeDetectionRepository()
+        val viewModel = createViewModel(repository)
 
         advanceUntilIdle()
         viewModel.onStartDetection()
@@ -73,12 +62,7 @@ class DetectionViewModelTest {
 
     @Test
     fun onToggleCamera_switchesLensFacing() = runTest(testDispatcher) {
-        val viewModel = DetectionViewModel(
-            detectionRepository = DetectionRepositoryImpl(),
-            appInfoProvider = AppInfoProvider(),
-            userSettingsRepository = FakeUserSettingsRepository(),
-            ioDispatcher = testDispatcher
-        )
+        val viewModel = createViewModel()
 
         advanceUntilIdle()
         assertEquals(CameraLens.BACK, viewModel.uiState.value.cameraLens)
@@ -88,5 +72,19 @@ class DetectionViewModelTest {
 
         viewModel.onToggleCamera()
         assertEquals(CameraLens.BACK, viewModel.uiState.value.cameraLens)
+    }
+
+    private fun createViewModel(
+        repository: FakeDetectionRepository = FakeDetectionRepository()
+    ): DetectionViewModel {
+        return DetectionViewModel(
+            detectionRepository = repository,
+            appInfoProvider = AppInfoProvider(),
+            userSettingsRepository = FakeUserSettingsRepository(),
+            scanHistoryRepository = FakeScanHistoryRepository(),
+            galleryImageDetector = FakeStillImageDetector(),
+            cameraControlHolder = FakeCameraControls(),
+            ioDispatcher = testDispatcher
+        )
     }
 }

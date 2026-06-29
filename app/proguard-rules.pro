@@ -17,3 +17,8 @@
 -keepclassmembers class * extends androidx.datastore.preferences.protobuf.GeneratedMessageLite* {
    <fields>;
 }
+
+# Room
+-keep class * extends androidx.room.RoomDatabase
+-keep @androidx.room.Entity class *
+-dontwarn androidx.room.paging.**

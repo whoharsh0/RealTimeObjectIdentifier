@@ -6,6 +6,8 @@ import kotlinx.coroutines.flow.Flow
 interface UserSettingsRepository {
     val settings: Flow<UserSettings>
     fun currentSettings(): UserSettings
+    suspend fun applySettings(transform: (UserSettings) -> UserSettings)
+    suspend fun resetToDefaults()
     suspend fun setConfidenceThreshold(value: Float)
     suspend fun setMaxDetections(value: Int)
     suspend fun setShowConfidencePercent(value: Boolean)

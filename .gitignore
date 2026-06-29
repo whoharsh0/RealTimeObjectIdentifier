@@ -22,3 +22,6 @@ captures/
 output.json
 *.hprof
 .kotlin/
+keystore.properties
+release.keystore
+*.keystore

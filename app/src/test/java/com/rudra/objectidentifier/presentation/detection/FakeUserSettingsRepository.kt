@@ -15,19 +15,27 @@ class FakeUserSettingsRepository(
 
     override fun currentSettings(): UserSettings = _settings.value
 
+    override suspend fun applySettings(transform: (UserSettings) -> UserSettings) {
+        _settings.value = transform(_settings.value)
+    }
+
+    override suspend fun resetToDefaults() {
+        _settings.value = UserSettings()
+    }
+
     override suspend fun setConfidenceThreshold(value: Float) {
-        _settings.value = _settings.value.copy(confidenceThreshold = value)
+        applySettings { it.copy(confidenceThreshold = value) }
     }
 
     override suspend fun setMaxDetections(value: Int) {
-        _settings.value = _settings.value.copy(maxDetections = value)
+        applySettings { it.copy(maxDetections = value) }
     }
 
     override suspend fun setShowConfidencePercent(value: Boolean) {
-        _settings.value = _settings.value.copy(showConfidencePercent = value)
+        applySettings { it.copy(showConfidencePercent = value) }
     }
 
     override suspend fun setHasSeenOnboarding(value: Boolean) {
-        _settings.value = _settings.value.copy(hasSeenOnboarding = value)
+        applySettings { it.copy(hasSeenOnboarding = value) }
     }
 }

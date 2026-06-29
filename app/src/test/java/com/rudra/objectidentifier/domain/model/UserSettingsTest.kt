@@ -8,8 +8,8 @@ class UserSettingsTest {
     @Test
     fun defaults_matchDetectorBaseline() {
         val settings = UserSettings()
-        assertEquals(0.45f, settings.confidenceThreshold)
-        assertEquals(5, settings.maxDetections)
+        assertEquals(0.40f, settings.confidenceThreshold)
+        assertEquals(10, settings.maxDetections)
         assertEquals(true, settings.showConfidencePercent)
         assertEquals(false, settings.hasSeenOnboarding)
     }

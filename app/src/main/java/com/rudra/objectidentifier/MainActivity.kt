@@ -7,23 +7,26 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.rudra.objectidentifier.di.DetectorWarmupMarker
 import com.rudra.objectidentifier.ui.navigation.ObjectIdentifierNavHost
-import com.rudra.objectidentifier.ui.theme.RealTimeObjectIdentifierTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var detectorWarmup: DetectorWarmupMarker
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            RealTimeObjectIdentifierTheme {
-                val navController = rememberNavController()
-                ObjectIdentifierNavHost(
-                    navController = navController,
-                    modifier = Modifier.fillMaxSize()
-                )
-            }
+            val navController = rememberNavController()
+            ObjectIdentifierNavHost(
+                navController = navController,
+                modifier = Modifier.fillMaxSize()
+            )
         }
     }
 }
